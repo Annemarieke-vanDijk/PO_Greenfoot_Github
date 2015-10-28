@@ -14,12 +14,14 @@ public class balB extends bal
      */
     public void act() 
     {
+       checkCollision();
+       
+       
        
        // Als links/rechts knop ingedrukt is verplaats het balletje dan naar rechts.
        // Als dit buiten het kader is zet de bal dan weer terug.
        // Nadat de knop ingedrukt is is er een delay.
-       // Als op de spatiebalk gedrukt wordt gaat de bal omlaag, hij gaat omlaag totdat hij op een andere bal stuit, 
-       // op dat moment gaat de bal weer 1 vakje naar boven.
+       if (getY() == 120){
        if (Greenfoot.isKeyDown("Left")){
         
            setLocation(getX() - 80, getY());
@@ -42,16 +44,29 @@ public class balB extends bal
             }
             Greenfoot.delay(10);
        }
-       if (Greenfoot.isKeyDown("Space")){
-           setLocation(getX(), getY() + 80);
-                  if (getIntersectingObjects(bal.int)=true){
-                      setLocation(getX(), getY() - 80);
-                  }
-                  else if (getIntersectingObjects(bal.int)=false){
-                      setLocation(getX(), getY() + 80);
-                  }
-           Greenfoot.delay(10);
+    }
+    /*Als je op de spatiebalk drukt gaat de bal eerst helemaal omlaag. 
+      Een ander stuk code zorgt dat de bal eventueel weer omhoog gaat om te zorgen dat er geen twee ballen in één vakje zitten.
+      Dat is de 'private void checkCollision()'*/
+    if (Greenfoot.isKeyDown("Space")){
+        int i = 0;
+        while (i < 7)
+        {
+            setLocation(getX(), getY() + 80);
+            Greenfoot.delay(5);
+            i = i + 1;
+        }
         }
        
+
+}
+//deze private void detecteert of dat bal1 een andere bal tegen komt. Als bal1 een andere bal tegen komt gaat bal1 80 pixels omhoog. Dit herhaald zich totdat
+//bal1 geen andere bal meer tegen komt. 
+private void checkCollision()
+{
+    bal a = (bal) getOneIntersectingObject(bal.class);
+    if(a != null) {
+        setLocation(getX(), getY() - 80);
+    }
 }
 }
