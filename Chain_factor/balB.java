@@ -44,7 +44,7 @@ public class balB extends bal
             }
             Greenfoot.delay(10);
        }
-    }
+    
     /*Als je op de spatiebalk drukt gaat de bal eerst helemaal omlaag. 
       Een ander stuk code zorgt dat de bal eventueel weer omhoog gaat om te zorgen dat er geen twee ballen in één vakje zitten.
       Dat is de 'private void checkCollision()'*/
@@ -53,10 +53,12 @@ public class balB extends bal
         while (i < 7)
         {
             setLocation(getX(), getY() + 80);
-            Greenfoot.delay(5);
+            Greenfoot.delay(i+1);
             i = i + 1;
         }
-        }
+        
+    }
+}
        
 
 }

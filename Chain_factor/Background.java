@@ -8,7 +8,8 @@ import greenfoot.*;
  */
 public class Background extends World
 {
-
+    private int balBCount;
+    
     /**
      * Constructor for objects of class Background.
      * 
@@ -34,10 +35,18 @@ public class Background extends World
         bal Bal13 = new bal();
         bal Bal14 = new bal();
         bal Bal15 = new bal();
-        addObject(new balB(), 120, 120);
         
+        balBCount = 0;
+        //kijkt of er nog een balB is
+        if (balBCount == 0) {
+            addObject(new balB(), 120, 120);
+            balBCount = balBCount + 1;
+        }
+        if (Greenfoot.isKeyDown("Space")) {
+            balBCount = balBCount - 1;
+        }
         // Plaats de ballen op een willekeurig plek aan de hand van 5 verschillende indelingen.
-              
+        
         int wilstructuur = Greenfoot.getRandomNumber(5);
         if (wilstructuur == 0) 
         {
@@ -130,7 +139,6 @@ public class Background extends World
             addObject(Bal15, 120, 440);
         }
     }
-    
 }
 
     
